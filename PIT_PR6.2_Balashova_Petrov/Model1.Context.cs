@@ -12,7 +12,7 @@ namespace PIT_PR6._2_Balashova_Petrov
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class UserAuthDBEntities : DbContext
     {
         private static UserAuthDBEntities _context;
@@ -31,7 +31,7 @@ namespace PIT_PR6._2_Balashova_Petrov
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<User> User { get; set; }
     }
 }
