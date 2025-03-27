@@ -15,11 +15,18 @@ namespace PIT_PR6._2_Balashova_Petrov
     
     public partial class UserAuthDBEntities : DbContext
     {
+        private static UserAuthDBEntities _context;
         public UserAuthDBEntities()
             : base("name=UserAuthDBEntities")
         {
         }
-    
+        public static UserAuthDBEntities GetContext()
+        {
+            if (_context == null)
+                _context = new UserAuthDBEntities();
+            return _context;
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
