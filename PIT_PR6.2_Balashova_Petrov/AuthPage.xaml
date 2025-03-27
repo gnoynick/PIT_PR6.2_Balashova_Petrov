@@ -19,7 +19,7 @@
                 <TextBox x:Name="TextBoxLogin" Margin="0,0,0,15"/>
 
                 <TextBlock Text="Пароль:" Margin="0,0,0,5"/>
-                <PasswordBox x:Name="PasswordBox" Margin="0,0,0,20"/>
+                <TextBox x:Name="PasswordBox" Margin="0,0,0,20"/>
 
                 <StackPanel x:Name="CaptchaPanel" Visibility="Collapsed" Margin="0,0,0,20">
                     <Border BorderBrush="Black" BorderThickness="1" Padding="10" Background="White">

@@ -65,7 +65,7 @@ namespace PIT_PR6._2_Balashova_Petrov
         {
             if (string.IsNullOrEmpty(TextBoxFIO.Text) ||
                 string.IsNullOrEmpty(TextBoxLogin.Text) ||
-                string.IsNullOrEmpty(PasswordBox.Password) ||
+                string.IsNullOrEmpty(PasswordBox.Text) ||
                 CmbGender.SelectedItem == null ||
                 CmbRole.SelectedItem == null ||
                 string.IsNullOrEmpty(TextBoxPhone.Text))
@@ -94,7 +94,7 @@ namespace PIT_PR6._2_Balashova_Petrov
                     {
                         FIO = TextBoxFIO.Text,
                         Login = TextBoxLogin.Text,
-                        Password = PasswordBox.Password,
+                        Password = PasswordBox.Text,
                         Role = (CmbRole.SelectedItem as ComboBoxItem)?.Content.ToString(),
                         Gender = (CmbGender.SelectedItem as ComboBoxItem)?.Content.ToString(),
                         Phone = TextBoxPhone.Text,

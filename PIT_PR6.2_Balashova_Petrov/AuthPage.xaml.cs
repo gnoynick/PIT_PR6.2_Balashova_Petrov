@@ -63,7 +63,7 @@ namespace PIT_PR6._2_Balashova_Petrov
                 }
             }
 
-            if (string.IsNullOrEmpty(TextBoxLogin.Text) || string.IsNullOrEmpty(PasswordBox.Password))
+            if (string.IsNullOrEmpty(TextBoxLogin.Text) || string.IsNullOrEmpty(PasswordBox.Text))
             {
                 MessageBox.Show("Пожалуйста, заполните все поля!", "Ошибка",MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -73,7 +73,7 @@ namespace PIT_PR6._2_Balashova_Petrov
             {
                 var user = db.User.FirstOrDefault(u =>
                     u.Login == TextBoxLogin.Text &&
-                    u.Password == PasswordBox.Password);
+                    u.Password == PasswordBox.Text);
 
                 if (user != null)
                 {

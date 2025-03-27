@@ -22,7 +22,7 @@
                 <TextBox x:Name="TextBoxLogin" Margin="0,0,0,15"/>
 
                 <TextBlock Text="Пароль:" Margin="0,0,0,5"/>
-                <PasswordBox x:Name="PasswordBox" Margin="0,0,0,15"/>
+                <TextBox x:Name="PasswordBox" Margin="0,0,0,15"/>
 
                 <TextBlock Text="Пол:" Margin="0,0,0,5"/>
                 <ComboBox x:Name="CmbGender" Margin="0,0,0,15">
