@@ -40,5 +40,5 @@
    - правильная генерация и проверка капчи.
 
 ## Прикрепленные материалы
-   - [**SQL-скрипт базы данных**](https://github.com/gnoynick/PIT_PR6.2_Balashova_Petrov/blob/master/скрипт%20бд.sql)
+   - [**SQL-скрипт базы данных User**](https://github.com/gnoynick/PIT_PR6.2_Balashova_Petrov/blob/master/скрипт%20бд.sql)
    - [**Ссылка на программное решение в СКВ Git**](https://github.com/gnoynick/PIT_PR6.2_Balashova_Petrov/tree/master)
