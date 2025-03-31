@@ -15,9 +15,9 @@ namespace PIT_PR6._2_Balashova_Petrov
     public partial class User
     {
         public int ID { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public string Role { get; set; }
+        public string Logins { get; set; }
+        public string Passwords { get; set; }
+        public string Roles { get; set; }
         public string FIO { get; set; }
         public string Gender { get; set; }
         public string Phone { get; set; }

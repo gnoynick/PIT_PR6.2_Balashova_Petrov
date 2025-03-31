@@ -12,26 +12,19 @@ namespace PIT_PR6._2_Balashova_Petrov
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
-    public partial class UserAuthDBEntities : DbContext
+    
+    public partial class UserAuthDBEntities1 : DbContext
     {
-        private static UserAuthDBEntities _context;
-        public UserAuthDBEntities()
-            : base("name=UserAuthDBEntities")
+        public UserAuthDBEntities1()
+            : base("name=UserAuthDBEntities1")
         {
         }
-        public static UserAuthDBEntities GetContext()
-        {
-            if (_context == null)
-                _context = new UserAuthDBEntities();
-            return _context;
-        }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
         public virtual DbSet<User> User { get; set; }
     }
 }

@@ -17,16 +17,18 @@ namespace PIT_PR6._2_Balashova_Petrov
 {
     public partial class AuthPage : Page
     {
-        private int failedAttempts = 0;
-        private string currentCaptcha = "";
+        public int failedAttempts = 0;
+        public string currentCaptcha = "";
+
 
         public AuthPage()
         {
             InitializeComponent();
             GenerateCaptcha();
+            CaptchaPanel.Visibility = Visibility.Collapsed;
         }
 
-        private void GenerateCaptcha()
+        public void GenerateCaptcha()
         {
             const string chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
             var random = new Random();
@@ -46,41 +48,61 @@ namespace PIT_PR6._2_Balashova_Petrov
             CaptchaText.RenderTransform = transformGroup;
         }
 
-        private void RefreshCaptcha_Click(object sender, RoutedEventArgs e)
+        public void RefreshCaptcha_Click(object sender, RoutedEventArgs e)
         {
             GenerateCaptcha();
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
+            Auth(TextBoxLogin.Text, PasswordBox.Text, CaptchaInput.Text);
+        }
+
+        public bool Auth(string login, string password, string captchaInput = null)
+        {
             if (CaptchaPanel.Visibility == Visibility.Visible)
             {
-                if (CaptchaInput.Text != currentCaptcha)
+                if (string.IsNullOrEmpty(captchaInput) || captchaInput != currentCaptcha)
                 {
-                    MessageBox.Show("Неверно введена капча!", "Ошибка",MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Неверно введена капча!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     GenerateCaptcha();
-                    return;
+                    return false;
                 }
             }
 
-            if (string.IsNullOrEmpty(TextBoxLogin.Text) || string.IsNullOrEmpty(PasswordBox.Text))
+            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Пожалуйста, заполните все поля!", "Ошибка",MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                MessageBox.Show("Пожалуйста, заполните все поля!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
             }
 
-            using (var db = new UserAuthDBEntities())
+            using (var db = new UserAuthDBEntities1())
             {
-                var user = db.User.FirstOrDefault(u =>
-                    u.Login == TextBoxLogin.Text &&
-                    u.Password == PasswordBox.Text);
+                var userExists = db.User.Any(u => u.Logins == login);
+
+                if (!userExists)
+                {
+                    MessageBox.Show("Такого пользователя не существует!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    failedAttempts++;
+
+                    if (failedAttempts >= 3)
+                    {
+                        CaptchaPanel.Visibility = Visibility.Visible;
+                        GenerateCaptcha();
+                    }
+                    return false;
+                }
+
+                var user = db.User.FirstOrDefault(u => u.Logins == login && u.Passwords == password);
 
                 if (user != null)
                 {
                     failedAttempts = 0;
                     CaptchaPanel.Visibility = Visibility.Collapsed;
+                    ClearInputFields();
 
-                    MessageBox.Show($"Здравствуйте, {user.Role} {user.FIO}!","Успешная авторизация",MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show($"Здравствуйте, {user.Roles} {user.FIO}!", "Успешная авторизация", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return true;
                 }
                 else
                 {
@@ -92,9 +114,17 @@ namespace PIT_PR6._2_Balashova_Petrov
                         GenerateCaptcha();
                     }
 
-                    MessageBox.Show("Неверный логин или пароль! Попыток: " + (3 - failedAttempts),"Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Неверный пароль! Осталось попыток: " + (3 - failedAttempts), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false;
                 }
             }
+        }
+
+        private void ClearInputFields()
+        {
+            TextBoxLogin.Clear();
+            PasswordBox.Clear();
+            CaptchaInput.Clear();
         }
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)

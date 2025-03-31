@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PIT_PR6.2_Balashova_Petrov", "PIT_PR6.2_Balashova_Petrov\PIT_PR6.2_Balashova_Petrov.csproj", "{AA30D2FC-9256-4A4D-AE71-F1B2F031D0A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject\UnitTestProject.csproj", "{1A7ECCCB-2AC2-44FE-AADA-BABFBD401742}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{AA30D2FC-9256-4A4D-AE71-F1B2F031D0A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA30D2FC-9256-4A4D-AE71-F1B2F031D0A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA30D2FC-9256-4A4D-AE71-F1B2F031D0A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A7ECCCB-2AC2-44FE-AADA-BABFBD401742}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A7ECCCB-2AC2-44FE-AADA-BABFBD401742}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A7ECCCB-2AC2-44FE-AADA-BABFBD401742}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A7ECCCB-2AC2-44FE-AADA-BABFBD401742}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

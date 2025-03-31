@@ -16,12 +16,12 @@
                            HorizontalAlignment="Center" Margin="0,0,0,20"/>
 
                 <TextBlock Text="Логин:" Margin="0,0,0,5"/>
-                <TextBox x:Name="TextBoxLogin" Margin="0,0,0,15"/>
+                <TextBox x:Name="TextBoxLogin" Margin="0,0,0,15" x:FieldModifier="public"/>
 
                 <TextBlock Text="Пароль:" Margin="0,0,0,5"/>
-                <TextBox x:Name="PasswordBox" Margin="0,0,0,20"/>
+                <TextBox x:Name="PasswordBox" Margin="0,0,0,20" x:FieldModifier="public"/>
 
-                <StackPanel x:Name="CaptchaPanel" Visibility="Collapsed" Margin="0,0,0,20">
+                <StackPanel x:Name="CaptchaPanel" Visibility="Collapsed" Margin="0,0,0,20" x:FieldModifier="public">
                     <Border BorderBrush="Black" BorderThickness="1" Padding="10" Background="White">
                         <Grid Width="200" Height="60">
                             <TextBlock x:Name="CaptchaText" FontSize="24" FontWeight="Bold" 
@@ -50,7 +50,7 @@
                         </Grid>
                     </Border>
                     <TextBlock Text="Введите текст с картинки:" Margin="0,10,0,5"/>
-                    <TextBox x:Name="CaptchaInput" Margin="0,0,0,10"/>
+                    <TextBox x:Name="CaptchaInput" Margin="0,0,0,10" x:FieldModifier="public"/>
                     <Button Content="Обновить капчу" Click="RefreshCaptcha_Click"
                             HorizontalAlignment="Right" Background="Transparent"
                             BorderBrush="#FF0078D7" Foreground="#FF0078D7"/>
